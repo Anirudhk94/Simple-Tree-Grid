@@ -16,17 +16,17 @@
                     "   <tbody>\n" +
                     "     <tr ng-repeat=\"row in tree_rows | searchFor:$parent.filterString:expandingProperty:colDefinitions track by row.branch.uid\"\n" +
                     "       ng-class=\"'level-' + {{ row.level }} + (row.branch.selected ? ' active':'')\" class=\"tree-grid-row\">\n" +
-                    "       <td><a ng-click=\"user_clicks_branch(row.branch)\"><i ng-class=\"row.tree_icon\"\n" +
+                    "       <td ><a ng-click=\"user_clicks_branch(row.branch)\"><i ng-class=\"row.tree_icon\"\n" +
                     "              ng-click=\"row.branch.expanded = !row.branch.expanded\"\n" +
                     "              class=\"indented tree-icon\"></i></a><span ng-if=\"expandingProperty.cellTemplate\" class=\"indented tree-label\" " +
                     "              ng-click=\"on_user_click(row.branch)\" compile=\"expandingProperty.cellTemplate\"></span>" +
                     "              <span  ng-if=\"!expandingProperty.cellTemplate\" class=\"indented tree-label\" ng-click=\"on_user_click(row.branch)\">\n" +
                     "             {{row.branch[expandingProperty.field] || row.branch[expandingProperty]}}</span>\n" +
-                    "       </td>\n" +
+                    "       </td>\n" + 
                     "       <td ng-repeat=\"col in colDefinitions\">\n" +
                     "         <div ng-if=\"col.cellTemplate\" compile=\"col.cellTemplate\" cell-template-scope=\"col.cellTemplateScope\"></div>\n" +
                     "         <div ng-if=\"!col.cellTemplate\">{{row.branch[col.field]}}</div>\n" +
-                    "       </td>\n" +
+                    "       </td>\n<td><button type='button' class='btn btn-default' aria-label='Left Align'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> </button>&nbsp<button type='button' class='btn btn-default' aria-label='Right Align'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </button></td>" +
                     "     </tr>\n" +
                     "   </tbody>\n" +
                     " </table>\n" +
@@ -398,6 +398,7 @@
                                     return _results;
                                 }
                             };
+
                             _ref = scope.treeData;
                             _results = [];
                             for (_i = 0, _len = _ref.length; _i < _len; _i++) {
