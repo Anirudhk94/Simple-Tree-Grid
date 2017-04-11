@@ -89,11 +89,20 @@
                     ];
 
                    $scope.my_tree_handler = function(branch){
-                        console.log('you clicked on', branch)
-                        $scope.tree_data.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});
-                   } 
-               
-
+                        var parent_index;
+                        console.log('you clicked on', branch);
+                        for(i = 0 ; i < $scope.tree_data.length ; i ++) {
+                            if($scope.tree_data[i].Name == branch.Name) {
+                                parent_index = i;
+                                console.log(i);
+                            }
+                        }
+                        if(parent_index >= 0) {                        
+                            $scope.tree_data[parent_index].children.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});
+                        } else {
+                            $scope.tree_data.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});                            
+                        }
+                   }
 
             });
 
