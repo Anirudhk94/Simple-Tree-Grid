@@ -62,21 +62,30 @@
                     ];
 
                    $scope.my_tree_handler = function(branch){
-
-                        var parent_index;
+                        // var parent_index;
                         console.log('you clicked on', branch);
-                        for(i = 0 ; i < $scope.tree_data.length ; i ++) {
-                            if($scope.tree_data[i].Name == branch.Name) {
-                                parent_index = i;
-                                console.log(i);
-                            }
-                        }
-                        if(parent_index >= 0) {                        
-                            $scope.tree_data[parent_index].children.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});
-                        } else {
-                            $scope.tree_data.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});                            
-                        }
+                        // for(i = 0 ; i < $scope.tree_data.length ; i ++) {
+                        //     if($scope.tree_data[i].Name == branch.Name) {
+                        //         parent_index = i;
+                        //         console.log(i);
+                        //     }
+                        // }
+                        // if(parent_index >= 0) {                        
+                        //     $scope.tree_data[parent_index].children.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});
+                        // } else {
+                        //     $scope.tree_data.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});                            
+                        // }
                    }
+
+                   $scope.addRow = function(branch) {
+                       console.log('In addRow()');
+                       branch.children.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"})
+                   }
+
+                   $scope.deleteRow = function(branch) {
+                        console.log(branch);
+                   }
+
 
             });
 
@@ -87,10 +96,11 @@
             <h4 class=" text-center text-info">trap tree in a grid</h4>
         </div><br/><br/><br/>
         <div ng-app="myApp" ng-controller="myCtrl">
-           <button ng-click="addTreeNode" class="btn btn-primary btn-sm">Add Tree Node</button><br/><br/>
+           <button ng-click="addRow()" class="btn btn-primary btn-sm">Add Tree Node</button><br/><br/>
            <tree-grid tree-data = "tree_data"
-                      on-click = "my_tree_handler(branch)"></tree-grid>
+                      on-click = "addRow(branch)"  
+                      on-select = "my_tree_handler(branch)"></tree-grid>
         </div>
-
+        
     </body>
 </html>
