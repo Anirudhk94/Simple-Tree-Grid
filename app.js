@@ -46,7 +46,6 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
          }
      ];
 
-
      $scope.selectedRow = null;
 
      $scope.my_tree_handler = function(branch) {
@@ -110,7 +109,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
      }
 
      $scope.editRow = function() {
-
+        $scope.selectedRow.Name = "New-Name";
      }
 
 
