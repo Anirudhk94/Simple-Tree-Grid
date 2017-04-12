@@ -26,7 +26,7 @@
                     "       <td ng-repeat=\"col in colDefinitions\">\n" +
                     "         <div ng-if=\"col.cellTemplate\" compile=\"col.cellTemplate\" cell-template-scope=\"col.cellTemplateScope\"></div>\n" +
                     "         <div ng-if=\"!col.cellTemplate\">{{row.branch[col.field]}}</div>\n" +
-                    "       </td><td><button type='button' class='btn btn-default' aria-label='Right Align'><span class='glyphicon glyphicon-trash' aria-hidden='true'></span> </button>\n</td>" +
+                    "       </td>" +
                     "     </tr>\n" +
                     "   </tbody>\n" +
                     " </table>\n" +

@@ -111,6 +111,8 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
      $scope.deleteRow = function() {
          branch = $scope.selectedRow;
          console.log(branch);
+         outcome = confirm('Are you sure you want to delete '+branch.Name+' ?');
+         if(outcome == false) return;
          console.log($scope.tree_data.indexOf(branch));
          if (branch.level == 1) {
              $scope.tree_data.splice($scope.tree_data.indexOf(branch), 1)
