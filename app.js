@@ -90,6 +90,10 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
 
      $scope.addRow = function() {
          console.log('In addRow()');
+         if($scope.selectedRow.level == 3) {
+             alert('Cannot add data to this level');
+             return;
+         }
          if($scope.selectedRow != null) {
             $scope.selectedRow.children.push({
                 Name: "New_Node",
