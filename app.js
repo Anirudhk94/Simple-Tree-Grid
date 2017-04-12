@@ -46,39 +46,6 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
          }
      ];
 
-     $scope.col_defs = [{
-             field: "Description"
-         },
-         {
-             field: "DemographicId",
-             displayName: "Demographic Id",
-             sortable: true,
-             filterable: true
-         },
-         {
-             field: "ParentId",
-             displayName: "Parent Id"
-         },
-         {
-             field: "Area",
-             sortable: true,
-             sortingType: "number",
-             filterable: true
-         },
-         {
-             field: "Population"
-         },
-         {
-             field: "image",
-             displayName: "Image",
-             cellTemplate: "<img ng-click='cellTemplateScope.click(\'example\')' ng-src='{{ row.branch[col.field] }}' />",
-             cellTemplateScope: {
-                 click: function(data) {
-                     console.log(data);
-                 }
-             }
-         }
-     ];
 
      $scope.selectedRow = null;
 
@@ -90,11 +57,11 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
 
      $scope.addRow = function() {
          console.log('In addRow()');
-         if($scope.selectedRow.level == 3) {
+         if($scope.selectedRow != null && $scope.selectedRow.level == 3) {
              alert('Cannot add data to this level');
              return;
          }
-         if($scope.selectedRow != null) {
+         else if($scope.selectedRow != null) {
             $scope.selectedRow.children.push({
                 Name: "New_Node",
                 Area: 268581,
@@ -140,6 +107,10 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                 }
              }
          }         
+     }
+
+     $scope.editRow = function() {
+
      }
 
 
