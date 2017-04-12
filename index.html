@@ -84,6 +84,11 @@
 
                    $scope.deleteRow = function(branch) {
                         console.log(branch);
+                        console.log($scope.tree_data.indexOf(branch));
+                        if($scope.tree_data.indexOf(branch) > -1) {
+                            $scope.tree_data.splice($scope.tree_data.indexOf(branch),1)
+                        }
+                        // branch.childern.splice(branch,1)
                    }
 
 
@@ -98,8 +103,8 @@
         <div ng-app="myApp" ng-controller="myCtrl">
            <button ng-click="addRow()" class="btn btn-primary btn-sm">Add Tree Node</button><br/><br/>
            <tree-grid tree-data = "tree_data"
-                      on-click = "addRow(branch)"  
-                      on-select = "my_tree_handler(branch)"></tree-grid>
+                      on-click = "deleteRow(branch)"  
+                      on-select = "addRow(branch)"></tree-grid>
         </div>
         
     </body>
