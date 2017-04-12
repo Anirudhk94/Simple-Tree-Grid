@@ -18,8 +18,11 @@
         <h4 class=" text-center text-info">trap tree in a grid</h4>
     </div><br/><br/><br/>
     <div ng-app="myApp" ng-controller="myCtrl">
-        <button ng-click="addRow()" class="btn btn-primary btn-sm">Add Tree Node</button><br/><br/>
-        <tree-grid tree-data="tree_data" on-click="addRow(branch)" on-select=""></tree-grid>
+        <button ng-click="addRow()" class="btn btn-primary btn-sm">Add Node</button>
+        <button ng-click="deleteRow()" class="btn btn-primary btn-sm">Delete Node</button>
+        <br/><br/>
+        <tree-grid tree-data="tree_data" on-select="my_tree_handler(branch)"
+                   ></tree-grid>
     </div>
 
 </body>

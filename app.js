@@ -15,8 +15,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                              Name: "San Francisco",
                              Area: 231,
                              Population: 837442,
-                             TimeZone: "PST"
-                         },
+                             TimeZone: "PST"                         },
                          {
                              Name: "Los Angeles",
                              Area: 503,
@@ -81,39 +80,60 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
          }
      ];
 
+     $scope.selectedRow = null;
+
      $scope.my_tree_handler = function(branch) {
-         // var parent_index;
-         console.log('you clicked on', branch);
-         // for(i = 0 ; i < $scope.tree_data.length ; i ++) {
-         //     if($scope.tree_data[i].Name == branch.Name) {
-         //         parent_index = i;
-         //         console.log(i);
-         //     }
-         // }
-         // if(parent_index >= 0) {                        
-         //     $scope.tree_data[parent_index].children.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});
-         // } else {
-         //     $scope.tree_data.push({Name:"New_Node",Area:268581,Population:26448193,TimeZone:"Mountain"});                            
-         // }
+         $scope.selectedRow = branch;
+         console.log('selected branch :', branch);
+         console.log('selected branch level :', branch.level);
      }
 
-     $scope.addRow = function(branch) {
+     $scope.addRow = function() {
          console.log('In addRow()');
-         branch.children.push({
-             Name: "New_Node",
-             Area: 268581,
-             Population: 26448193,
-             TimeZone: "Mountain"
-         })
+         if($scope.selectedRow != null) {
+            $scope.selectedRow.children.push({
+                Name: "New_Node",
+                Area: 268581,
+                Population: 26448193,
+                TimeZone: "Mountain"
+            });
+          } 
+          else {
+              $scope.tree_data.push({
+                Name: "New_Node",
+                Area: 268581,
+                Population: 26448193,
+                TimeZone: "Mountain"
+            });
+          }
      }
 
-     $scope.deleteRow = function(branch) {
+     $scope.deleteRow = function() {
+         branch = $scope.selectedRow;
          console.log(branch);
          console.log($scope.tree_data.indexOf(branch));
-         if ($scope.tree_data.indexOf(branch) > -1) {
+         if (branch.level == 1) {
              $scope.tree_data.splice($scope.tree_data.indexOf(branch), 1)
-         }
-         // branch.childern.splice(branch,1)
+         } 
+         else if(branch.level == 2){
+             for(i = 0 ; i < $scope.tree_data.length ; i++) {
+                if($scope.tree_data[i].children.indexOf(branch) > -1) {
+                    $scope.tree_data[i].children.splice($scope.tree_data[i].children.indexOf(branch),1);
+                    break;
+                }
+             }
+         } else if(branch.level == 3) {
+             for(i = 0 ; i < $scope.tree_data.length ; i++) { //level1
+                if($scope.tree_data[i].children.length > 0) { //check if children exist
+                    for(j = 0 ; j < $scope.tree_data[i].children.length ; j++) { // if children exist loop though it
+                        if($scope.tree_data[i].children[j].uid == branch.parent_uid) { 
+                            $scope.tree_data[i].children[j].children.splice($scope.tree_data[i].children[j].children.indexOf(branch),1);
+                            break;
+                        }
+                    }
+                }
+             }
+         }         
      }
 
 
