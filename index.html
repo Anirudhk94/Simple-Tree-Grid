@@ -18,6 +18,7 @@
         <h4 class=" text-center text-info">trap tree in a grid</h4>
     </div><br/><br/><br/>
     <div ng-app="myApp" ng-controller="myCtrl">
+        <h4 class="text-info" ng-hide="selectedRow == null">Selected Row : {{selectedRow.Name}}</h4><br/>
         <button ng-click="addRow()" class="btn btn-primary btn-sm">Add Node</button>
         <button ng-click="deleteRow()" class="btn btn-primary btn-sm">Delete Node</button>
         <button ng-click="editRow()" class="btn btn-primary btn-sm">Edit Node</button>

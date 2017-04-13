@@ -57,7 +57,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
      $scope.addRow = function() {
          console.log('In addRow()');
          if($scope.selectedRow != null && $scope.selectedRow.level == 3) {
-             alert('Cannot add data to this level');
+             alert('Cannot add node to this level');
              return;
          }
          else if($scope.selectedRow != null) {
@@ -110,7 +110,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
 
      $scope.editRow = function() {
         $scope.selectedRow.Name = "New-Name";
+        
      }
-
 
  });
