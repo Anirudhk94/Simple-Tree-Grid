@@ -14,9 +14,9 @@
                     "     </tr>\n" +
                     "   </thead>\n" +
                     "   <tbody>\n" +
-                    "     <tr ng-click=\"user_clicks_branch(row.branch)\" ng-repeat=\"row in tree_rows | searchFor:$parent.filterString:expandingProperty:colDefinitions track by row.branch.uid\"\n" +
+                    "     <tr ng-dblclick=\"user_double_clicks_branch(row.branch)\" ng-click=\"user_clicks_branch(row.branch)\" ng-repeat=\"row in tree_rows | searchFor:$parent.filterString:expandingProperty:colDefinitions track by row.branch.uid\"\n" +
                     "       ng-class=\"'level-' + {{ row.level }} + (row.branch.selected ? ' active':'')\" class=\"tree-grid-row\">\n" +
-                    "       <td><a ><i ng-class=\"row.tree_icon\"\n" +
+                    "       <td><a><i ng-class=\"row.tree_icon\"\n" +
                     "              ng-click=\"row.branch.expanded = !row.branch.expanded\"\n" +
                     "              class=\"indented tree-icon\"></i></a><span ng-if=\"expandingProperty.cellTemplate\" class=\"indented tree-label\" " +
                     "              ng-click=\"on_user_click(row.branch)\" compile=\"expandingProperty.cellTemplate\"></span>" +
@@ -86,10 +86,10 @@
                         expandOn: '=',
                         onSelect: '&',
                         onClick: '&',
+                        onDclick: '&',
                         initialSelection: '@',
                         treeControl: '=',
-                        expandTo: '=',
-                        control: '='
+                        expandTo: '='                    
                     },
                     link: function (scope, element, attrs) {
                         var error, expandingProperty, expand_all_parents, expand_level, for_all_ancestors, for_each_branch, get_parent, n, on_treeData_change, select_branch, selected_branch, tree;
@@ -113,12 +113,6 @@
                             return;
                         }
 
-                        // My function
-                        var unselectBranch = function() {
-                            selected_branch.selected = false;
-                            selected_branch = null;
-                        }
-                        //
                         var getExpandingProperty = function getExpandingProperty() {
                             if (attrs.expandOn) {
                                 expandingProperty = scope.expandOn;
@@ -216,6 +210,8 @@
                             }
                         };
 
+                         
+
                         scope.on_user_click = function (branch) {
                             if (scope.onClick) {
                                 scope.onClick({
@@ -228,6 +224,14 @@
                                 return select_branch(branch);
                             }
                         };
+                        scope.user_double_clicks_branch = function (branch) {
+                            if (branch === selected_branch) {
+                                selected_branch.selected = false;
+                                selected_branch = null;
+                            }
+                            scope.onDclick();
+                            
+                        }
 
                         /* sorting methods */
                         scope.sortBy = function (col) {

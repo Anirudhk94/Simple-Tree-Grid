@@ -55,7 +55,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
          $scope.selectedRow = branch;
          console.log('selected branch :', branch);
          console.log('selected branch level :', branch.level);
-         
+
      }
 
      $scope.addRow = function() {
@@ -115,6 +115,11 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
      $scope.editRow = function() {
         $scope.selectedRow.Name = "New-Name";
 
+     }
+
+     $scope.deselectRow = function() {
+         console.log('In deselectRow')
+         $scope.selectedRow = null;
      }
 
  });
