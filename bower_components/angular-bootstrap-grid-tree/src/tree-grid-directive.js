@@ -88,7 +88,8 @@
                         onClick: '&',
                         initialSelection: '@',
                         treeControl: '=',
-                        expandTo: '='
+                        expandTo: '=',
+                        control: '='
                     },
                     link: function (scope, element, attrs) {
                         var error, expandingProperty, expand_all_parents, expand_level, for_all_ancestors, for_each_branch, get_parent, n, on_treeData_change, select_branch, selected_branch, tree;
@@ -112,6 +113,12 @@
                             return;
                         }
 
+                        // My function
+                        var unselectBranch = function() {
+                            selected_branch.selected = false;
+                            selected_branch = null;
+                        }
+                        //
                         var getExpandingProperty = function getExpandingProperty() {
                             if (attrs.expandOn) {
                                 expandingProperty = scope.expandOn;

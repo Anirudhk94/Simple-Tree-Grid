@@ -12,20 +12,21 @@
     <script src="app.js"></script>
 </head>
 
-<body style="margin:20px">
+<body ng-app="myApp" ng-controller="myCtrl" style="margin:20px">
     <div class="row container">
         <h1 class="text-center">tree-grid</h1>
         <h4 class=" text-center text-info">trap tree in a grid</h4>
-    </div><br/><br/><br/>
-    <div ng-app="myApp" ng-controller="myCtrl">
-        <h4 class="text-info" ng-hide="selectedRow == null">Selected Row : {{selectedRow.Name}}</h4><br/>
+    </div><br/><br/>
+    <div>
         <button ng-click="addRow()" class="btn btn-primary btn-sm">Add Node</button>
         <button ng-click="deleteRow()" class="btn btn-primary btn-sm">Delete Node</button>
         <button ng-click="editRow()" class="btn btn-primary btn-sm">Edit Node</button>
+        <button ng-click="" class="btn btn-primary btn-sm">Unselect Node</button>
         <br/><br/>
-        <tree-grid tree-data="tree_data" on-select="my_tree_handler(branch)"></tree-grid>
+        <h4 class="text-info" ng-hide="selectedRow == null">Selected Row : {{selectedRow.Name}}</h4>
+        <br/>
+        <tree-grid control="focusinControl" tree-data="tree_data" on-select="my_tree_handler(branch)"></tree-grid>
     </div>
-
 </body>
 
 </html>
