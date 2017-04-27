@@ -19,12 +19,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
             field:"A",
             displayName:"A",
             cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }}\"><img style=\"width: 17px\" src=\"tick.png\" /></div>"
-                            +"<div ng-hide=\"{{ row.branch[col.field] }}\"><img style=\"width: 25px;margin-left: -6px;\" src=\"cross.png\" /></div>",
-            cellTemplateScope: {
-                click: function(data) {         // this works too: $scope.someMethod;
-                    console.log('Hi');
-                }
-            }
+                            +"<div ng-hide=\"{{ row.branch[col.field] }}\"><img style=\"width: 25px;margin-left: -6px;\" src=\"cross.png\" /></div>"
         },
      ];
 
@@ -39,7 +34,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                      Area: 423970,
                      Population: 38340000,
                      TimeZone: "Pacific Time",
-                     A: 1,
+                     A: 0,
                      children: [{
                              Name: "San Francisco",
                              Area: 231,
@@ -52,7 +47,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                              Area: 503,
                              Population: 3904657,
                              TimeZone: "PST",
-                             A: 1
+                             A: 0
                          }
                      ]
                  },
@@ -61,13 +56,13 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                      Area: 57914,
                      Population: 12882135,
                      TimeZone: "Central Time Zone",
-                     A: 0,
+                     A: 1,
                      children: [{
                          Name: "Chicago",
                          Area: 234,
                          Population: 2695598,
                          TimeZone: "CST",
-                         A: 0
+                         A: 1
                      }]
                  }
              ]
