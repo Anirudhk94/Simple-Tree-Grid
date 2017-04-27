@@ -19,7 +19,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
             field:"A",
             displayName:"A",
             cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }}\"><img style=\"width: 17px\" src=\"tick.png\" /></div>"
-                            +"<div ng-hide=\"{{ row.branch[col.field] }}\"><img style=\"width: 25px;margin-left: -6px;\" src=\"cross.png\" /></div>"
+                            +"<div ng-hide=\"{{ row.branch[col.field] }}\"><img style=\"width: 22px;margin-left: -4px;\" src=\"cross.png\" /></div>"
         },
      ];
 
