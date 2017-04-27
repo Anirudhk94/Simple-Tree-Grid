@@ -1,29 +1,58 @@
 var app = angular.module('myApp', ['treeGrid', 'xeditable']);
- 
-  
-
 
  app.controller('myCtrl', function($scope) {
+
+     $scope.col_defs = [
+        {
+            field:"Area",
+            displayName:"Area"
+        },
+        {
+            field:"Population",
+            displayName:"Population"
+        },
+        {
+            field:"TimeZone",
+            displayName:"TimeZone"
+        },
+        {
+            field:"A",
+            displayName:"A",
+            cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }}\"><img style=\"width: 17px\" src=\"tick.png\" /></div>"
+                            +"<div ng-hide=\"{{ row.branch[col.field] }}\">{{ row.branch[col.field] }}</div>",
+            cellTemplateScope: {
+                click: function(data) {         // this works too: $scope.someMethod;
+                    console.log('Hi');
+                }
+            }
+        },
+     ];
+
      $scope.tree_data = [{
              Name: "USA",
              Area: 9826675,
              Population: 318212000,
              TimeZone: "UTC -5 to -10",
+             A: 0,
              children: [{
                      Name: "California",
                      Area: 423970,
                      Population: 38340000,
                      TimeZone: "Pacific Time",
+                     A: 1,
                      children: [{
                              Name: "San Francisco",
                              Area: 231,
                              Population: 837442,
-                             TimeZone: "PST"                         },
+                             TimeZone: "PST",
+                             A: 1                         
+                            },
                          {
                              Name: "Los Angeles",
                              Area: 503,
                              Population: 3904657,
-                             TimeZone: "PST"
+                             TimeZone: "PST",
+                             A: 1
                          }
                      ]
                  },
@@ -32,11 +61,13 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                      Area: 57914,
                      Population: 12882135,
                      TimeZone: "Central Time Zone",
+                     A: 0,
                      children: [{
                          Name: "Chicago",
                          Area: 234,
                          Population: 2695598,
-                         TimeZone: "CST"
+                         TimeZone: "CST",
+                         A: 0
                      }]
                  }
              ]
@@ -45,7 +76,8 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
              Name: "Texas",
              Area: 268581,
              Population: 26448193,
-             TimeZone: "Mountain"
+             TimeZone: "Mountain",
+             A: 1
          }
      ];
 

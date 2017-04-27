@@ -25,7 +25,7 @@
         <h4 class="text-info" ng-hide="selectedRow == null">Selected Row : {{selectedRow.Name}}</h4>
         <h4 class="text-info" ng-hide="selectedRow != null">Selected Row : null</h4>
         <br/>
-        <tree-grid tree-data="tree_data" on-dclick="deselectRow()" on-select="my_tree_handler(branch)"></tree-grid>
+        <tree-grid col-defs="col_defs" tree-data="tree_data" on-dclick="deselectRow()" on-select="my_tree_handler(branch)"></tree-grid>
     </div>
 </body>
 
