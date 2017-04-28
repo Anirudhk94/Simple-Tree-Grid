@@ -222,6 +222,8 @@
                         scope.user_clicks_branch = function (branch) {
                             if (branch !== selected_branch) {
                                 return select_branch(branch);
+                            } else {
+                                 scope.user_double_clicks_branch(branch)
                             }
                         };
                         scope.user_double_clicks_branch = function (branch) {
