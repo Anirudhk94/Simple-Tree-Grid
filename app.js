@@ -18,7 +18,8 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
         {
             field:"A",
             displayName:"A",
-            cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }}\"><img style=\"width: 16px\" src=\"tick.png\" /></div>"
+            cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }} == 1\"><img style=\"width: 16px\" src=\"tick.png\" /></div>"+
+                            "<div ng-hide=\"{{ row.branch[col.field] }} == 1\">{{ row.branch[col.field] }}</div>"
         },
      ];
 
@@ -46,7 +47,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                              Area: 503,
                              Population: 3904657,
                              TimeZone: "PST",
-                             A: 0
+                             A: 0.56
                          }
                      ]
                  },
@@ -147,5 +148,53 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
          console.log('In deselectRow')
          $scope.selectedRow = null;
      }
+
+     
+
+     var init = function() {
+         console.log('In init()');
+         for(i = 0 ; i < $scope.tree_data.length ; i++) { //USA & Texas
+            if($scope.tree_data[i].children != null) { //If level 1 has children
+                var count = 0;                        //Count variable to check level 3 nodes that are 0
+                console.log($scope.tree_data[i].Name + " has children")
+                 for(j = 0 ; j < $scope.tree_data[i].children.length ; j++) { //Cali & Illinois
+                    if($scope.tree_data[i].children[j].children != null) { //If level 2 has children
+                        console.log($scope.tree_data[i].children[j].Name + " has children")
+                        var completed = 0
+
+                        for(k = 0 ; k < Object.keys($scope.tree_data[i].children[j].children).length ; k++) {
+                            if($scope.tree_data[i].children[j].children[k].A == 1) {
+                                completed++
+                            }
+                        }
+                        
+                        if(Object.keys($scope.tree_data[i].children[j].children).length == completed) {
+                            $scope.tree_data[i].children[j].A = 1
+                        } else {
+                            $scope.tree_data[i].children[j].A = completed+"/"+Object.keys($scope.tree_data[i].children[j].children).length
+                        }
+                        console.log($scope.tree_data[i].children[j].Name + " : "+ $scope.tree_data[i].children[j].A )
+
+                        console.log($scope.tree_data[i].Name+" > "+$scope.tree_data[i].children[j].Name+".A : "+$scope.tree_data[i].children[j].A)
+
+                        if($scope.tree_data[i].children[j].A == 1) {
+                            count++
+                        }
+                    }
+                }
+
+                console.log($scope.tree_data[i].Name+"'s count = "+count)
+
+                if($scope.tree_data[i].length == count) {
+                    $scope.tree_data[i].A = count
+                } else {
+                    $scope.tree_data[i].A = count + "/" + $scope.tree_data[i].children.length
+                }
+                console.log($scope.tree_data[i].Name + " : "+ $scope.tree_data[i].A )
+            }
+         }
+     }
+
+     init();
 
  });
