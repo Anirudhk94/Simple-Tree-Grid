@@ -1,6 +1,6 @@
 var app = angular.module('myApp', ['treeGrid', 'xeditable']);
 
- app.controller('myCtrl', function($scope) {
+ app.controller('myCtrl', function($scope, $http) {
 
      $scope.col_defs = [
         {
@@ -23,58 +23,7 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
         },
      ];
 
-     $scope.tree_data = [{
-             Name: "USA",
-             Area: 9826675,
-             Population: 318212000,
-             TimeZone: "UTC -5 to -10",
-             A: 0,
-             children: [{
-                     Name: "California",
-                     Area: 423970,
-                     Population: 38340000,
-                     TimeZone: "Pacific Time",
-                     A: 0,
-                     children: [{
-                             Name: "San Francisco",
-                             Area: 231,
-                             Population: 837442,
-                             TimeZone: "PST",
-                             A: 1                         
-                            },
-                         {
-                             Name: "Los Angeles",
-                             Area: 503,
-                             Population: 3904657,
-                             TimeZone: "PST",
-                             A: 0.56
-                         }
-                     ]
-                 },
-                 {
-                     Name: "Illinois",
-                     Area: 57914,
-                     Population: 12882135,
-                     TimeZone: "Central Time Zone",
-                     A: 1,
-                     children: [{
-                         Name: "Chicago",
-                         Area: 234,
-                         Population: 2695598,
-                         TimeZone: "CST",
-                         A: 1
-                     }]
-                 }
-             ]
-         },
-         {
-             Name: "India",
-             Area: 268581,
-             Population: 26448193,
-             TimeZone: "Mountain",
-             A: 1
-         }
-     ];
+    $scope.tree_data = [];
 
      $scope.selectedRow = null;
 
@@ -152,8 +101,22 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
      
 
      var init = function() {
-         console.log('In init()');
-         for(i = 0 ; i < $scope.tree_data.length ; i++) { //USA & Texas
+         $http({
+                method : "GET",
+                url : "http://localhost:8081/listTreeData"
+            }).then(function mySucces(response) {
+                console.log('success')
+                $scope.tree_data = response.data
+                initializeData()
+            }, function myError(response) {
+                console.log(response.statusText);
+            });
+        console.log('In init()')
+     }
+
+     var initializeData = function() {
+        console.log('In initializeData()') 
+        for(i = 0 ; i < $scope.tree_data.length ; i++) { //USA & Texas
             if($scope.tree_data[i].children != null) { //If level 1 has children
                 var count = 0;                        //Count variable to check level 3 nodes that are 0
                 console.log($scope.tree_data[i].Name + " has children")
