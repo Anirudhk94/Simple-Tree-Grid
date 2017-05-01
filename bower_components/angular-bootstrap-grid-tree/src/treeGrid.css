@@ -110,3 +110,8 @@ table.tree-grid {
 	max-height : 500px;
 	overflow-y : scroll;
 }
+
+.table > thead > tr > th {
+  vertical-align: top;
+
+}
