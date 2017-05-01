@@ -36,12 +36,12 @@
                     "         <div ng-if=\"!col.cellTemplate && col.field != \'Expanded\'\">{{row.branch[col.field]}}</div>\n" +
                     "       </td>" +
 
-                    "      <td style=\"text-align:center\" ng-show = expand>1</td>" +
-                    "      <td style=\"text-align:center\" ng-show = expand>2</td>" +
-                    "      <td style=\"text-align:center\" ng-show = expand>3</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['1']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['2']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['3']}}</td>" +
 
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
-                    "      <td style=\"text-align:center\" ng-hide = expand>6</td>" +
+                    "      <td style=\"text-align:center\" ng-hide = expand>{{row.branch['total']}}</td>" +
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
 
 
