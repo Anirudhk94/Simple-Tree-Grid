@@ -6,12 +6,12 @@
             function ($templateCache) {
                 $templateCache.put('template/treeGrid/treeGrid.html',
                     "<div class=\"table-responsive\">\n" +
-                    " <table class=\"table tree-grid\">\n" +
+                    " <table class=\"table tree-grid\" ng-init=\"expand = 'true'\">\n" +
                     "   <thead>\n" +
                     "     <tr>\n" +
                     "       <th rowspan = 2><a ng-if=\"expandingProperty.sortable\" ng-click=\"sortBy(expandingProperty)\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</a><span ng-if=\"!expandingProperty.sortable\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</span><i ng-if=\"expandingProperty.sorted\" class=\"{{expandingProperty.sortingIcon}} pull-right\"></i></th>\n" +
                     "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != \'Expandable\'\">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
-                    "       <th colspan = 3 style=\"text-align:center\" ng-init=\"expand = 'true'\">Expandable&nbsp&nbsp<button ng-show = expand ng-click=\" expand = !expand \"> - </button><button ng-hide = expand ng-click=\" expand = !expand \"> + </button></th>\n" +
+                    "       <th colspan = 3 style=\"text-align:center\">Expandable&nbsp&nbsp<button ng-show = expand ng-click=\" expand = !expand \"> - </button><button ng-hide = expand ng-click=\" expand = !expand \"> + </button></th>\n" +
                     "     </tr>\n" +
 
                     "     <tr ng-show = expand>\n" +
@@ -36,9 +36,14 @@
                     "         <div ng-if=\"!col.cellTemplate && col.field != \'Expanded\'\">{{row.branch[col.field]}}</div>\n" +
                     "       </td>" +
 
-                    "      <td style=\"text-align:center\">1</td>" +
-                    "      <td style=\"text-align:center\">2</td>" +
-                    "      <td style=\"text-align:center\">3</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand>1</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand>2</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand>3</td>" +
+
+                    "      <td style=\"text-align:center\" ng-hide = expand></td>" +
+                    "      <td style=\"text-align:center\" ng-hide = expand>6</td>" +
+                    "      <td style=\"text-align:center\" ng-hide = expand></td>" +
+
 
                     "     </tr>\n" +
                     "   </tbody>\n" +
