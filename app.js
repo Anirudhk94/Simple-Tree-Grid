@@ -16,6 +16,10 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
             displayName:"TimeZone"
         },
         {
+            field:"Expandable",
+            displayName:"Expandable"
+        },
+        {
             field:"A",
             displayName:"A",
             cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }} == 1\"><img style=\"width: 16px\" src=\"tick.png\" /></div>"+
@@ -45,7 +49,8 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                 Name: "New_Node",
                 Area: 268581,
                 Population: 26448193,
-                TimeZone: "Mountain"
+                TimeZone: "Mountain",
+                A:0
             });
           } 
           else {
@@ -53,9 +58,22 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                 Name: "New_Node",
                 Area: 268581,
                 Population: 26448193,
-                TimeZone: "Mountain"
+                TimeZone: "Mountain",
+                A:0
             });
           }
+          $http({
+                method : "POST",
+                url : "http://localhost:8081/addTreeData",
+                data : $scope.tree_data
+            }).then(function mySucces(response) {
+                console.log('success')
+                console.log(response.data)
+            }, function myError(response) {
+                console.log(response.statusText)
+            })
+            initializeData()
+
      }
 
      $scope.deleteRow = function() {
@@ -85,11 +103,88 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
                     }
                 }
              }
-         }         
+         }
+
+         $http({
+                method : "POST",
+                url : "http://localhost:8081/addTreeData",
+                data : $scope.tree_data
+            }).then(function mySucces(response) {
+                console.log('success')
+                console.log(response.data)
+            }, function myError(response) {
+                console.log(response.statusText);
+            });
+            initializeData()
      }
 
-     $scope.editRow = function() {
-        $scope.selectedRow.Name = "New-Name";
+     $scope.resetData = function() {
+        $scope.tree_data = [{  
+            Name:"USA",
+            Area:9826675,
+            Population:318212000,
+            TimeZone:"UTC -5 to -10",
+            A:0,
+            children:[  
+                {  
+                    Name:"California",
+                    Area:423970,
+                    Population:38340000,
+                    TimeZone:"Pacific Time",
+                    A:0,
+                    children:[  
+                        {  
+                            Name:"San Francisco",
+                            Area:231,
+                            Population:837442,
+                            TimeZone:"PST",
+                            A:1
+                        },
+                        {  
+                            Name:"Los Angeles",
+                            Area:503,
+                            Population:3904657,
+                            TimeZone:"PST",
+                            A:0.56
+                        }
+                    ]
+                },
+                {  
+                    Name:"Illinois",
+                    Area:57914,
+                    Population:12882135,
+                    TimeZone:"Central Time Zone",
+                    A:1,
+                    children:[  
+                        {  
+                            Name:"Chicago",
+                            Area:234,
+                            Population:2695598,
+                            TimeZone:"CST",
+                            A:1
+                        }
+                    ]
+                }
+            ]
+            },
+            {  
+                Name:"India",
+                Area:268581,
+                Population:26448193,
+                TimeZone:"Mountain",
+                A:1
+            }]
+            $http({
+                method : "POST",
+                url : "http://localhost:8081/addTreeData",
+                data : $scope.tree_data
+            }).then(function mySucces(response) {
+                console.log('success')
+                console.log(response.data)
+            }, function myError(response) {
+                console.log(response.statusText);
+            });
+            initializeData()
 
      }
 
@@ -117,11 +212,11 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
      var initializeData = function() {
         console.log('In initializeData()') 
         for(i = 0 ; i < $scope.tree_data.length ; i++) { //USA & Texas
-            if($scope.tree_data[i].children != null) { //If level 1 has children
+            if($scope.tree_data[i].children != null && $scope.tree_data[i].children.length > 0) { //If level 1 has children
                 var count = 0;                        //Count variable to check level 3 nodes that are 0
                 console.log($scope.tree_data[i].Name + " has children")
                  for(j = 0 ; j < $scope.tree_data[i].children.length ; j++) { //Cali & Illinois
-                    if($scope.tree_data[i].children[j].children != null) { //If level 2 has children
+                    if($scope.tree_data[i].children[j].children != null && Object.keys($scope.tree_data[i].children[j].children).length > 0) { //If level 2 has children
                         console.log($scope.tree_data[i].children[j].Name + " has children")
                         var completed = 0
 
