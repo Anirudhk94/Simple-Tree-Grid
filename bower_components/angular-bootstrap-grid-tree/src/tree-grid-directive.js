@@ -11,10 +11,10 @@
                     "     <tr>\n" +
                     "       <th rowspan = 2><a ng-if=\"expandingProperty.sortable\" ng-click=\"sortBy(expandingProperty)\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</a><span ng-if=\"!expandingProperty.sortable\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</span><i ng-if=\"expandingProperty.sorted\" class=\"{{expandingProperty.sortingIcon}} pull-right\"></i></th>\n" +
                     "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != \'Expandable\'\">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
-                    "       <th colspan = 3 style=\"text-align:center\">Expandable</th>\n" +
+                    "       <th colspan = 3 style=\"text-align:center\" ng-init=\"expand = 'true'\">Expandable {{expand}}&nbsp&nbsp<button ng-click=\" expand = !expand \"> + </button></th>\n" +
                     "     </tr>\n" +
 
-                    "     <tr>\n" +
+                    "     <tr ng-hide = expand>\n" +
                     "     <th style=\"text-align:center\">1</th>\n" +
                     "     <th style=\"text-align:center\">2</th>\n" +
                     "     <th style=\"text-align:center\">3</th>\n" +
@@ -35,9 +35,11 @@
                     "         <div ng-if=\"col.cellTemplate\" compile=\"col.cellTemplate\" cell-template-scope=\"col.cellTemplateScope\"></div>\n" +
                     "         <div ng-if=\"!col.cellTemplate && col.field != \'Expanded\'\">{{row.branch[col.field]}}</div>\n" +
                     "       </td>" +
+
                     "      <td style=\"text-align:center\">1</td>" +
                     "      <td style=\"text-align:center\">2</td>" +
                     "      <td style=\"text-align:center\">3</td>" +
+
                     "     </tr>\n" +
                     "   </tbody>\n" +
                     " </table>\n" +
