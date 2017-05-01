@@ -1,0 +1,24 @@
+{
+  "name": "simple-tree-grid",
+  "version": "1.0.0",
+  "description": "Tree in a table",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anirudhk94/Simple-Tree-Grid.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Anirudhk94/Simple-Tree-Grid/issues"
+  },
+  "homepage": "https://github.com/Anirudhk94/Simple-Tree-Grid#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2"
+  }
+}
