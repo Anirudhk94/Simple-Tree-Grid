@@ -64,13 +64,13 @@ app.controller('myCtrl', function($scope, $http) {
             url: "http://localhost:8081/addTreeData",
             data: $scope.tree_data
         }).then(function mySucces(response) {
+            initializeData()
+            location.reload()
             console.log('success')
             console.log(response.data)
         }, function myError(response) {
             console.log(response.statusText)
         })
-        initializeData()
-
     }
 
     $scope.deleteRow = function() {
@@ -106,12 +106,13 @@ app.controller('myCtrl', function($scope, $http) {
             url: "http://localhost:8081/addTreeData",
             data: $scope.tree_data
         }).then(function mySucces(response) {
+            initializeData()
+            location.reload()
             console.log('success')
             console.log(response.data)
         }, function myError(response) {
             console.log(response.statusText);
         });
-        initializeData()
     }
 
     $scope.resetData = function() {
@@ -242,12 +243,14 @@ app.controller('myCtrl', function($scope, $http) {
             url: "http://localhost:8081/addTreeData",
             data: $scope.tree_data
         }).then(function mySucces(response) {
+            initializeData()
+            location.reload()
             console.log('success')
             console.log(response.data)
         }, function myError(response) {
             console.log(response.statusText);
         });
-        initializeData()
+        
 
     }
 
@@ -312,6 +315,9 @@ app.controller('myCtrl', function($scope, $http) {
                     $scope.tree_data[i].A = count + "/" + $scope.tree_data[i].children.length
                 }
                 console.log($scope.tree_data[i].Name + " : " + $scope.tree_data[i].A)
+            }
+            else {
+                $scope.tree_data[i].A = 1
             }
         }
     }
