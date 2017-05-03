@@ -133,8 +133,8 @@ app.controller('myCtrl', function($scope, $http) {
                         "A": "1/2",
                         "1": 0.81,
                         "2": 0.33,
-                        "3": 0.18,
-                        "total": 1.32,
+                        "3": 0.15,
+                        "total": 1.29,
                         "children": [{
                                 "Name": "San Francisco",
                                 "Area": 231,
