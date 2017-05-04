@@ -5,30 +5,154 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.col_defs = [{
             field: "Product id",
             displayName: "Product id"
-        },
-        {
-            field: "Generated forecast",
-            displayName: "Generated forecast"
-        },
-        {
-            field: "System forecast",
-            displayName: "System forecast"
-        },
-        {
-            field: "A",
-            displayName: "A"
-        },
-        {
-            field: "B",
-            displayName: "B"
-        },
-        {
-            field: "Stores",
-            displayName: "Stores"
         }
     ];
 
-    $scope.tree_data = [];
+    $scope.tree_data = [{  
+        "Name":"USA",
+        "Product id":9826675,
+        "Mean1":123,
+        "SD1":318,
+        "Mean2":234,
+        "SD2":123,
+        "stores":6,
+        "Berg":"5/10",
+        "Karl":"6/10",
+        "HH34":"3/10",
+        "Average":41,
+        "Average2":39,
+        "children":[  
+            {  
+                "Name":"store1",
+                "Product id":12332,
+                "Mean1":323,
+                "SD1":3545,
+                "Mean2":32,
+                "SD2":1,
+                "stores":3,
+                "Berg":"1/3",
+                "Karl":"2/3",
+                "HH34":1,
+                "Average":2,
+                "Average2":1
+            },
+            {  
+                "Name":"store2",
+                "Product id":24341,
+                "Mean1":442,
+                "SD1":543,
+                "Mean2":2412,
+                "SD2":2424,
+                "stores":2,
+                "Berg":"1/2",
+                "Karl":1,
+                "HH34":"1/2",
+                "Average":1.33,
+                "Average2":1.5
+            },
+            {  
+                "Name":"hello",
+                "Product id":84272,
+                "Mean1":234,
+                "SD1":455,
+                "Mean2":643,
+                "SD2":4265,
+                "stores":5,
+                "Berg":1,
+                "Karl":"4/5",
+                "HH34":1,
+                "Average":4.66,
+                "Average2":4.5,
+                "children":[  
+                    {  
+                    "Name":"eclipse",
+                    "Product id":89241,
+                    "Mean1":124,
+                    "SD1":24553,
+                    "Mean2":5124,
+                    "SD2":214,
+                    "stores":3,
+                    "Berg":1,
+                    "Karl":"",
+                    "HH34":1,
+                    "Average":0.6,
+                    "Average2":0.5
+                    },
+                    {  
+                    "Name":"circle",
+                    "Product id":122321,
+                    "Mean1":1256,
+                    "SD1":643,
+                    "Mean2":667,
+                    "SD2":86,
+                    "stores":5,
+                    "Berg":1,
+                    "Karl":1,
+                    "HH34":1,
+                    "Average":1,
+                    "Average2":1
+                    },
+                    {  
+                    "Name":"square",
+                    "Product id":8653,
+                    "Mean1":65,
+                    "SD1":86,
+                    "Mean2":643,
+                    "SD2":733,
+                    "stores":5,
+                    "Berg":1,
+                    "Karl":1,
+                    "HH34":1,
+                    "Average":1,
+                    "Average2":1
+                    },
+                    {  
+                    "Name":"rhombus",
+                    "Product id":75368,
+                    "Mean1":456,
+                    "SD1":46,
+                    "Mean2":6245,
+                    "SD2":72,
+                    "stores":5,
+                    "Berg":1,
+                    "Karl":1,
+                    "HH34":1,
+                    "Average":1,
+                    "Average2":1
+                    },
+                    {  
+                    "Name":"parallel",
+                    "Product id":094217,
+                    "Mean1":7644,
+                    "SD1":62,
+                    "Mean2":51,
+                    "SD2":53,
+                    "stores":5,
+                    "Berg":1,
+                    "Karl":1,
+                    "HH34":1,
+                    "Average":1,
+                    "Average2":1
+                    }
+                ]
+            }
+        ]
+        },
+        {  
+        "Name":"parallello",
+        "Product id":0942121,
+        "Mean1":721,
+        "SD1":62,
+        "Mean2":51,
+        "SD2":53,
+        "stores":5,
+        "Berg":"4/10",
+        "Karl":"3/10",
+        "HH34":"5/10",
+        "Average":3,
+        "Average2":3.5
+        }
+        ];
 
     $scope.selectedRow = null;
 
@@ -61,18 +185,6 @@ app.controller('myCtrl', function($scope, $http) {
                 A: 0
             });
         }
-        $http({
-            method: "POST",
-            url: "http://localhost:8081/addTreeData",
-            data: $scope.tree_data
-        }).then(function mySucces(response) {
-            initializeData()
-            location.reload()
-            console.log('success')
-            console.log(response.data)
-        }, function myError(response) {
-            console.log(response.statusText)
-        })
     }
 
     $scope.deleteRow = function() {
@@ -102,159 +214,6 @@ app.controller('myCtrl', function($scope, $http) {
                 }
             }
         }
-
-        $http({
-            method: "POST",
-            url: "http://localhost:8081/addTreeData",
-            data: $scope.tree_data
-        }).then(function mySucces(response) {
-            initializeData()
-            location.reload()
-            console.log('success')
-            console.log(response.data)
-        }, function myError(response) {
-            console.log(response.statusText);
-        });
-    }
-
-    $scope.resetData = function() {
-        $scope.tree_data = [{
-                "Name": "USA",
-                "Product id": 9826675,
-                "Generated forecast": 318212000,
-                "System forecast": "UTC -5 to -10",
-                "A": "1/2",
-                "1": 0.56,
-                "2": 0.46,
-                "3": 0.18,
-                "total": 1.50,
-                "children": [{
-                        "Name": "California",
-                        "Product id": 423970,
-                        "Generated forecast": 38340000,
-                        "System forecast": "Pacific Time",
-                        "A": "1/2",
-                        "1": "1/2",
-                        "2": 0.33,
-                        "3": 0.15,
-                        "total": 1.29,
-                        "children": [{
-                                "Name": "San Francisco",
-                                "Product id": 231,
-                                "Generated forecast": 837442,
-                                "System forecast": "PST",
-                                "A": 1,
-                                "1": 1,
-                                "2": 0.76,
-                                "3": 0.85,
-                                "total": 2.28,
-                                "uid": "0.5259034653475307",
-                                "parent_uid": "0.19315158825942902",
-                                "children": [
-
-                                ],
-                                "expanded": false,
-                                "level": 3
-                            },
-                            {
-                                "Name": "Los Angeles",
-                                "Product id": 503,
-                                "Generated forecast": 3904657,
-                                "System forecast": "PST",
-                                "A": 0.56,
-                                "1": "",
-                                "2": 0.29,
-                                "3": 0.45,
-                                "total": 1.05,
-                                "uid": "0.9164884504669628",
-                                "parent_uid": "0.19315158825942902",
-                                "children": [
-
-                                ],
-                                "expanded": false,
-                                "level": 3
-                            }
-                        ],
-                        "uid": "0.19315158825942902",
-                        "parent_uid": "0.6553580416041782",
-                        "expanded": true,
-                        "level": 2,
-                        "selected": false
-                    },
-                    {
-                        "Name": "Illinois",
-                        "Product id": 57914,
-                        "Generated forecast": 12882135,
-                        "System forecast": "Central Time Zone",
-                        "A": 1,
-                        "1": 1,
-                        "2": 0.53,
-                        "3": 0.16,
-                        "total": 1.40,
-                        "children": [{
-                            "Name": "Chicago",
-                            "Product id": 234,
-                            "Generated forecast": 2695598,
-                            "System forecast": "CST",
-                            "A": 1,
-                            "1": 1,
-                            "2": 0.90,
-                            "3": 0.82,
-                            "total": 1.84,
-                            "uid": "0.8797474338481657",
-                            "parent_uid": "0.6899022709342761",
-                            "children": [],
-                            "expanded": false,
-                            "level": 3
-                        }],
-                        "uid": "0.6899022709342761",
-                        "parent_uid": "0.6553580416041782",
-                        "expanded": true,
-                        "level": 2,
-                        "selected": false
-                    }
-                ],
-                "uid": "0.6553580416041782",
-                "expanded": true,
-                "level": 1,
-                "selected": false
-            },
-
-            {
-                "Name": "India",
-                "Product id": 268581,
-                "Generated forecast": 26448193,
-                "System forecast": "Mountain",
-                "A": 1,
-                "1": 1,
-                "2": 0.56,
-                "3": 0.23,
-                "total": 1.22,
-                "uid": "0.7220238105378316",
-                "children": [
-
-                ],
-                "expanded": false,
-                "level": 1
-            }
-        ]
-
-
-
-        $http({
-            method: "POST",
-            url: "http://localhost:8081/addTreeData",
-            data: $scope.tree_data
-        }).then(function mySucces(response) {
-            initializeData()
-            location.reload()
-            console.log('success')
-            console.log(response.data)
-        }, function myError(response) {
-            console.log(response.statusText);
-        });
-        
-
     }
 
     $scope.deselectRow = function() {
@@ -265,16 +224,7 @@ app.controller('myCtrl', function($scope, $http) {
 
 
     var init = function() {
-        $http({
-            method: "GET",
-            url: "http://localhost:8081/listTreeData"
-        }).then(function mySucces(response) {
-            console.log('success')
-            $scope.tree_data = response.data
-            initializeData()
-        }, function myError(response) {
-            console.log(response.statusText);
-        });
+        initializeData()
         console.log('In init()')
     }
 

@@ -11,19 +11,29 @@
                     "     <tr>\n" +
                     "       <th rowspan = 2><a ng-if=\"expandingProperty.sortable\" ng-click=\"sortBy(expandingProperty)\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</a><span ng-if=\"!expandingProperty.sortable\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</span><i ng-if=\"expandingProperty.sorted\" class=\"{{expandingProperty.sortingIcon}} pull-right\"></i></th>\n" +
                     "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != 'A' && col.field != 'B' \">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
-                    "       <th ng-click=\" expand = !expand \" colspan = 3 style=\"text-align:center\">A</th>\n" +                                        
-                    "       <th ng-click=\" exp = !exp \" colspan = 2 style=\"text-align:center\">B</th>\n" +
+
+                    "       <th colspan = 2 class=table-header>Generated forecast</th>"+
+                    "       <th colspan = 2 class=table-header>System forecast</th>"+
+                    "       <th rowspan = 2 class=table-header>Stores</th>"+
+
+                    "       <th ng-click=\" expand = !expand \" colspan = 3 class=table-header>A</th>\n" +                                        
+                    "       <th ng-click=\" exp = !exp \" colspan = 2 class=table-header>B</th>\n" +
                     "     </tr>\n" +
 
                     "     <tr >\n" +
-                    "     <th ng-show = expand style=\"text-align:center\">One</th>\n" +
-                    "     <th ng-show = expand style=\"text-align:center\">Two</th>\n" +
-                    "     <th ng-show = expand style=\"text-align:center\">Three</th>\n" +
+                    "     <th class=table-subheader>Mean</th>\n" +
+                    "     <th class=table-subheader>SD</th>\n" +
+                    "     <th class=table-subheader>Mean</th>\n" +
+                    "     <th class=table-subheader>SD</th>\n" +
+
+                    "     <th ng-show = expand class=table-subheader>Berg</th>\n" +
+                    "     <th ng-show = expand class=table-subheader>Karl</th>\n" +
+                    "     <th ng-show = expand class=table-subheader>HH34</th>\n" +
 
                     "     <th ng-if = \"!expand && exp\"></th ><th ng-if = \"!expand && exp\"></th><th ng-if = \"!expand && exp\"></th>"+
                     
-                    "     <th ng-show = exp style=\"text-align:center\">One</th>\n" +
-                    "     <th ng-show = exp style=\"text-align:center\">Two</th>\n" +
+                    "     <th ng-show = exp class=table-subheader>Berg</th>\n" +
+                    "     <th ng-show = exp class=table-subheader>Karl</th>\n" +
                     "     </tr>\n" +
  
                     "   </thead>\n" +
@@ -42,22 +52,30 @@
                     "         <div ng-if=\"!col.cellTemplate && col.field != \'Expanded\'\">{{row.branch[col.field]}}</div>\n" +
                     "       </td>" +
 
-                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['1'] !=1 \">{{row.branch['1']}}</td>" +
-                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['1'] ==1 \"><img src='tick.png' style=\"width:16px;\"></td>" +
-                    "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['2']}}</td>" +
-                    "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['3']}}</td>" +
+                    "      <td class=table-center>{{row.branch['Mean1']}}</td><td class=table-center>{{row.branch['SD1']}}</td>"+
+                    "      <td class=table-center>{{row.branch['Mean2']}}</td><td class=table-center>{{row.branch['SD2']}}</td>"+
+                    "      <td class=table-center>{{row.branch['stores']}}</td>"+
+
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['Berg'] !=1 \">{{row.branch['Berg']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['Berg'] ==1 \"><img src='tick.png' style=\"width:19px;\"></td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['Karl'] !=1 \">{{row.branch['Karl']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['Karl'] ==1 \"><img src='tick.png' style=\"width:19px;\"></td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['HH34'] !=1 \">{{row.branch['HH34']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['HH34'] ==1 \"><img src='tick.png' style=\"width:19px;\"></td>" +
 
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
-                    "      <td style=\"text-align:center\" ng-hide = expand>{{row.branch['total']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-hide = expand ng-if = \" row.branch['Average'] !=1 \">{{row.branch['Average']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-hide = expand ng-if = \" row.branch['Average'] ==1 \"><img src='tick.png' style=\"width:19px;\"></td>" +
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
 
 
-                    "      <td style=\"text-align:center\" ng-show = exp ng-if = \" row.branch['1'] !=1 \">{{row.branch['1']}}</td>" +
-                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['1'] ==1 \"><img src='tick.png' style=\"width:16px;\"></td>" +
-                    
-                    "      <td style=\"text-align:center\" ng-show = exp>{{row.branch['2']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = exp ng-if = \" row.branch['Berg'] !=1 \">{{row.branch['Berg']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = exp ng-if = \" row.branch['Berg'] ==1 \"><img src='green.png' style=\"width:19px;\"></td>" +
+                    "      <td style=\"text-align:center\" ng-show = exp ng-if = \" row.branch['Karl'] !=1 \">{{row.branch['Karl']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = exp ng-if = \" row.branch['Karl'] ==1 \"><img src='green.png' style=\"width:19px;\"></td>" +
 
-                    "      <td style=\"text-align:center\" ng-hide = exp>{{row.branch['total']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-hide = exp ng-if = \" row.branch['Average2'] !=1 \">{{row.branch['Average2']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-hide = exp ng-if = \" row.branch['Average2'] ==1 \"><img src='green.png' style=\"width:19px;\"></td>" +
 
 
                     "     </tr>\n" +
