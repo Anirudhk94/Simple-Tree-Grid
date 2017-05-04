@@ -22,7 +22,7 @@ app.controller('myCtrl', function($scope, $http) {
             field: "A",
             displayName: "A",
             cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }} == 1\"><img style=\"width: 16px\" src=\"tick.png\" /></div>" +
-                "<div ng-hide=\"{{ row.branch[col.field] }} == 1\">{{ row.branch[col.field] }}</div>"
+                "<div ng-if=\" row.branch[col.field]  != 1\">{{ row.branch[col.field] }}</div>"
         },
         {
             field: "Stores",
@@ -146,7 +146,7 @@ app.controller('myCtrl', function($scope, $http) {
                                 "Population": 837442,
                                 "TimeZone": "PST",
                                 "A": 1,
-                                "1": 0.67,
+                                "1": 1,
                                 "2": 0.76,
                                 "3": 0.85,
                                 "total": 2.28,

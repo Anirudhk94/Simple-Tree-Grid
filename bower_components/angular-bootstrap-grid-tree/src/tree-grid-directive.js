@@ -42,7 +42,8 @@
                     "         <div ng-if=\"!col.cellTemplate && col.field != \'Expanded\'\">{{row.branch[col.field]}}</div>\n" +
                     "       </td>" +
 
-                    "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['1']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['1'] !=1 \">{{row.branch['1']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['1'] ==1 \"><img src='tick.png' style=\"width:16px;\"></td>" +
                     "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['2']}}</td>" +
                     "      <td style=\"text-align:center\" ng-show = expand>{{row.branch['3']}}</td>" +
 
