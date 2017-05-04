@@ -11,7 +11,7 @@
                     "     <tr>\n" +
                     "       <th rowspan = 2><a ng-if=\"expandingProperty.sortable\" ng-click=\"sortBy(expandingProperty)\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</a><span ng-if=\"!expandingProperty.sortable\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</span><i ng-if=\"expandingProperty.sorted\" class=\"{{expandingProperty.sortingIcon}} pull-right\"></i></th>\n" +
                     "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != \'Expandable\'\">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
-                    "       <th colspan = 3 style=\"text-align:center\">Expandable&nbsp&nbsp<button ng-show = expand ng-click=\" expand = !expand \"> - </button><button ng-hide = expand ng-click=\" expand = !expand \"> + </button></th>\n" +
+                    "       <th colspan = 3 style=\"text-align:center\">A&nbsp&nbsp<button ng-show = expand ng-click=\" expand = !expand \"> - </button><button ng-hide = expand ng-click=\" expand = !expand \"> + </button></th>\n" +
                     "     </tr>\n" +
 
                     "     <tr ng-show = expand>\n" +
