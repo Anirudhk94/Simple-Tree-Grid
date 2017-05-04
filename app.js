@@ -3,26 +3,24 @@ var app = angular.module('myApp', ['treeGrid', 'xeditable']);
 app.controller('myCtrl', function($scope, $http) {
 
     $scope.col_defs = [{
-            field: "Area",
+            field: "Product id",
             displayName: "Product id"
         },
         {
-            field: "Population",
+            field: "Generated forecast",
             displayName: "Generated forecast"
         },
         {
-            field: "TimeZone",
+            field: "System forecast",
             displayName: "System forecast"
         },
         {
-            field: "Expandable",
-            displayName: "Expandable"
+            field: "A",
+            displayName: "A"
         },
         {
-            field: "A",
-            displayName: "A",
-            cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }} == 1\"><img style=\"width: 16px\" src=\"tick.png\" /></div>" +
-                "<div ng-if=\" row.branch[col.field]  != 1\">{{ row.branch[col.field] }}</div>"
+            field: "B",
+            displayName: "B"
         },
         {
             field: "Stores",
@@ -122,29 +120,29 @@ app.controller('myCtrl', function($scope, $http) {
     $scope.resetData = function() {
         $scope.tree_data = [{
                 "Name": "USA",
-                "Area": 9826675,
-                "Population": 318212000,
-                "TimeZone": "UTC -5 to -10",
+                "Product id": 9826675,
+                "Generated forecast": 318212000,
+                "System forecast": "UTC -5 to -10",
                 "A": "1/2",
-                "1": 0.86,
+                "1": 0.56,
                 "2": 0.46,
                 "3": 0.18,
                 "total": 1.50,
                 "children": [{
                         "Name": "California",
-                        "Area": 423970,
-                        "Population": 38340000,
-                        "TimeZone": "Pacific Time",
+                        "Product id": 423970,
+                        "Generated forecast": 38340000,
+                        "System forecast": "Pacific Time",
                         "A": "1/2",
-                        "1": 0.81,
+                        "1": "1/2",
                         "2": 0.33,
                         "3": 0.15,
                         "total": 1.29,
                         "children": [{
                                 "Name": "San Francisco",
-                                "Area": 231,
-                                "Population": 837442,
-                                "TimeZone": "PST",
+                                "Product id": 231,
+                                "Generated forecast": 837442,
+                                "System forecast": "PST",
                                 "A": 1,
                                 "1": 1,
                                 "2": 0.76,
@@ -160,11 +158,11 @@ app.controller('myCtrl', function($scope, $http) {
                             },
                             {
                                 "Name": "Los Angeles",
-                                "Area": 503,
-                                "Population": 3904657,
-                                "TimeZone": "PST",
+                                "Product id": 503,
+                                "Generated forecast": 3904657,
+                                "System forecast": "PST",
                                 "A": 0.56,
-                                "1": 0.31,
+                                "1": "",
                                 "2": 0.29,
                                 "3": 0.45,
                                 "total": 1.05,
@@ -185,21 +183,21 @@ app.controller('myCtrl', function($scope, $http) {
                     },
                     {
                         "Name": "Illinois",
-                        "Area": 57914,
-                        "Population": 12882135,
-                        "TimeZone": "Central Time Zone",
+                        "Product id": 57914,
+                        "Generated forecast": 12882135,
+                        "System forecast": "Central Time Zone",
                         "A": 1,
-                        "1": 0.71,
+                        "1": 1,
                         "2": 0.53,
                         "3": 0.16,
                         "total": 1.40,
                         "children": [{
                             "Name": "Chicago",
-                            "Area": 234,
-                            "Population": 2695598,
-                            "TimeZone": "CST",
+                            "Product id": 234,
+                            "Generated forecast": 2695598,
+                            "System forecast": "CST",
                             "A": 1,
-                            "1": 0.12,
+                            "1": 1,
                             "2": 0.90,
                             "3": 0.82,
                             "total": 1.84,
@@ -224,11 +222,11 @@ app.controller('myCtrl', function($scope, $http) {
 
             {
                 "Name": "India",
-                "Area": 268581,
-                "Population": 26448193,
-                "TimeZone": "Mountain",
+                "Product id": 268581,
+                "Generated forecast": 26448193,
+                "System forecast": "Mountain",
                 "A": 1,
-                "1": 0.43,
+                "1": 1,
                 "2": 0.56,
                 "3": 0.23,
                 "total": 1.22,

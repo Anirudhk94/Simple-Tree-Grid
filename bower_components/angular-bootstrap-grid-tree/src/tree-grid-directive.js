@@ -10,7 +10,7 @@
                     "   <thead ng-init=\"exp = 'true'\">\n" +
                     "     <tr>\n" +
                     "       <th rowspan = 2><a ng-if=\"expandingProperty.sortable\" ng-click=\"sortBy(expandingProperty)\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</a><span ng-if=\"!expandingProperty.sortable\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</span><i ng-if=\"expandingProperty.sorted\" class=\"{{expandingProperty.sortingIcon}} pull-right\"></i></th>\n" +
-                    "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != \'Expandable\'\">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
+                    "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != 'A' && col.field != 'B' \">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
                     "       <th ng-click=\" expand = !expand \" colspan = 3 style=\"text-align:center\">A</th>\n" +                                        
                     "       <th ng-click=\" exp = !exp \" colspan = 2 style=\"text-align:center\">B</th>\n" +
                     "     </tr>\n" +
@@ -52,7 +52,9 @@
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
 
 
-                    "      <td style=\"text-align:center\" ng-show = exp>{{row.branch['1']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = exp ng-if = \" row.branch['1'] !=1 \">{{row.branch['1']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = expand ng-if = \" row.branch['1'] ==1 \"><img src='tick.png' style=\"width:16px;\"></td>" +
+                    
                     "      <td style=\"text-align:center\" ng-show = exp>{{row.branch['2']}}</td>" +
 
                     "      <td style=\"text-align:center\" ng-hide = exp>{{row.branch['total']}}</td>" +
