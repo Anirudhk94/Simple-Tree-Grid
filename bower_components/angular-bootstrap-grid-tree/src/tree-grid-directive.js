@@ -7,19 +7,25 @@
                 $templateCache.put('template/treeGrid/treeGrid.html',
                     "<div class=\"table-responsive\">\n" +
                     " <table class=\"table tree-grid\" ng-init=\"expand = 'true'\">\n" +
-                    "   <thead>\n" +
+                    "   <thead ng-init=\"exp = 'true'\">\n" +
                     "     <tr>\n" +
                     "       <th rowspan = 2><a ng-if=\"expandingProperty.sortable\" ng-click=\"sortBy(expandingProperty)\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</a><span ng-if=\"!expandingProperty.sortable\">{{expandingProperty.displayName || expandingProperty.field || expandingProperty}}</span><i ng-if=\"expandingProperty.sorted\" class=\"{{expandingProperty.sortingIcon}} pull-right\"></i></th>\n" +
                     "       <th rowspan = 2 ng-repeat=\"col in colDefinitions\"><a ng-if=\"col.sortable\" ng-click=\"sortBy(col)\">{{col.displayName || col.field}}</a><span ng-if=\"!col.sortable && col.field != \'Expandable\'\">{{col.displayName || col.field}}</span><i ng-if=\"col.sorted\" class=\"{{col.sortingIcon}} pull-right\"></i></th>\n" +
-                    "       <th colspan = 3 style=\"text-align:center\">A&nbsp&nbsp<button ng-show = expand ng-click=\" expand = !expand \"> - </button><button ng-hide = expand ng-click=\" expand = !expand \"> + </button></th>\n" +
+                    "       <th ng-click=\" expand = !expand \" colspan = 3 style=\"text-align:center\">A</th>\n" +                                        
+                    "       <th ng-click=\" exp = !exp \" colspan = 2 style=\"text-align:center\">B</th>\n" +
                     "     </tr>\n" +
 
-                    "     <tr ng-show = expand>\n" +
-                    "     <th style=\"text-align:center\">One</th>\n" +
-                    "     <th style=\"text-align:center\">Two</th>\n" +
-                    "     <th style=\"text-align:center\">Three</th>\n" +
-                    "     </tr>\n" +
+                    "     <tr >\n" +
+                    "     <th ng-show = expand style=\"text-align:center\">One</th>\n" +
+                    "     <th ng-show = expand style=\"text-align:center\">Two</th>\n" +
+                    "     <th ng-show = expand style=\"text-align:center\">Three</th>\n" +
 
+                    "     <th ng-if = \"!expand && exp\"></th ><th ng-if = \"!expand && exp\"></th><th ng-if = \"!expand && exp\"></th>"+
+                    
+                    "     <th ng-show = exp style=\"text-align:center\">One</th>\n" +
+                    "     <th ng-show = exp style=\"text-align:center\">Two</th>\n" +
+                    "     </tr>\n" +
+ 
                     "   </thead>\n" +
                     "   <tbody>\n" +
                     "     <tr ng-dblclick=\"user_double_clicks_branch(row.branch)\" ng-click=\"user_clicks_branch(row.branch)\" ng-repeat=\"row in tree_rows | searchFor:$parent.filterString:expandingProperty:colDefinitions track by row.branch.uid\"\n" +
@@ -43,6 +49,12 @@
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
                     "      <td style=\"text-align:center\" ng-hide = expand>{{row.branch['total']}}</td>" +
                     "      <td style=\"text-align:center\" ng-hide = expand></td>" +
+
+
+                    "      <td style=\"text-align:center\" ng-show = exp>{{row.branch['1']}}</td>" +
+                    "      <td style=\"text-align:center\" ng-show = exp>{{row.branch['2']}}</td>" +
+
+                    "      <td style=\"text-align:center\" ng-hide = exp>{{row.branch['total']}}</td>" +
 
 
                     "     </tr>\n" +

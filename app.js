@@ -4,15 +4,15 @@ app.controller('myCtrl', function($scope, $http) {
 
     $scope.col_defs = [{
             field: "Area",
-            displayName: "Area"
+            displayName: "Product id"
         },
         {
             field: "Population",
-            displayName: "Population"
+            displayName: "Generated forecast"
         },
         {
             field: "TimeZone",
-            displayName: "TimeZone"
+            displayName: "System forecast"
         },
         {
             field: "Expandable",
@@ -24,6 +24,10 @@ app.controller('myCtrl', function($scope, $http) {
             cellTemplate: "<div ng-show=\"{{ row.branch[col.field] }} == 1\"><img style=\"width: 16px\" src=\"tick.png\" /></div>" +
                 "<div ng-hide=\"{{ row.branch[col.field] }} == 1\">{{ row.branch[col.field] }}</div>"
         },
+        {
+            field: "Stores",
+            displayName: "Stores"
+        }
     ];
 
     $scope.tree_data = [];
@@ -134,8 +138,8 @@ app.controller('myCtrl', function($scope, $http) {
                         "A": "1/2",
                         "1": 0.81,
                         "2": 0.33,
-                        "3": 0.18,
-                        "total": 1.32,
+                        "3": 0.15,
+                        "total": 1.29,
                         "children": [{
                                 "Name": "San Francisco",
                                 "Area": 231,
@@ -217,6 +221,7 @@ app.controller('myCtrl', function($scope, $http) {
                 "level": 1,
                 "selected": false
             },
+
             {
                 "Name": "India",
                 "Area": 268581,
@@ -277,16 +282,20 @@ app.controller('myCtrl', function($scope, $http) {
 
     var initializeData = function() {
         console.log('In initializeData()')
-        for (i = 0; i < $scope.tree_data.length; i++) { //USA & Texas
+        for (i = 0; i < $scope.tree_data.length; i++) { //USA & India
+            $scope.tree_data[i].selected = false
             if ($scope.tree_data[i].children != null && $scope.tree_data[i].children.length > 0) { //If level 1 has children
                 var count = 0; //Count variable to check level 3 nodes that are 0
                 console.log($scope.tree_data[i].Name + " has children")
                 for (j = 0; j < $scope.tree_data[i].children.length; j++) { //Cali & Illinois
+                    $scope.tree_data[i].children[j].selected = false
                     if ($scope.tree_data[i].children[j].children != null && Object.keys($scope.tree_data[i].children[j].children).length > 0) { //If level 2 has children
+                        
                         console.log($scope.tree_data[i].children[j].Name + " has children")
                         var completed = 0
 
                         for (k = 0; k < Object.keys($scope.tree_data[i].children[j].children).length; k++) {
+                            $scope.tree_data[i].children[j].children[k].selected = false;
                             if ($scope.tree_data[i].children[j].children[k].A == 1) {
                                 completed++
                             }

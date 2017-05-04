@@ -14,7 +14,7 @@
 
 <body ng-app="myApp" ng-controller="myCtrl" style="margin:20px">
     <div class="row container">
-        <h1 class="text-center">tree-grid</h1>
+        <h1 class="text-center">Store-details</h1>
         <h4 class=" text-center text-info">trap tree in a grid</h4>
     </div><br/><br/>
     <div>
@@ -25,7 +25,7 @@
         <h4 class="text-info" ng-hide="selectedRow == null">Selected Row : {{selectedRow.Name}}</h4>
         <h4 class="text-info" ng-hide="selectedRow != null">Selected Row : null</h4>
         <br/>
-        <tree-grid id="myTable" col-defs="col_defs" tree-data="tree_data" on-dclick="deselectRow()" on-select="my_tree_handler(branch)"></tree-grid>
+        <tree-grid id="myTable" icon-leaf = "icon-file" col-defs="col_defs" tree-data="tree_data" on-dclick="deselectRow()" on-select="my_tree_handler(branch)"></tree-grid>
     </div>
 </body>
 
