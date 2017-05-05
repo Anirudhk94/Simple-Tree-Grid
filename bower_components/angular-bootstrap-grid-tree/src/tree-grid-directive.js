@@ -16,8 +16,8 @@
                     "       <th colspan = 2 class=table-header>System forecast</th>"+
                     "       <th rowspan = 2 class=table-header>Stores</th>"+
 
-                    "       <th ng-click=\" expand = !expand \" colspan = 3 class=table-header ><label style=\"cursor:pointer;\">A</label></th>\n" +                                        
-                    "       <th ng-click=\" exp = !exp \" colspan = 2 class=table-header ><label style=\"cursor:pointer;\">B</label></th>\n" +
+                    "       <th colspan = 3 class=table-header ><label ng-click=\" expand = !expand \"  style=\"cursor:pointer;\">A</label></th>\n" +                                        
+                    "       <th colspan = 2 class=table-header ><label ng-click=\" exp = !exp \" style=\"cursor:pointer;\">B</label></th>\n" +
                     "     </tr>\n" +
 
                     "     <tr >\n" +
