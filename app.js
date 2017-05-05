@@ -23,7 +23,7 @@ app.controller('myCtrl', function($scope, $http) {
         "Average2":39,
         "children":[  
             {  
-                "Name":"store1",
+                "Name":"Store1",
                 "Product id":12332,
                 "Mean1":323,
                 "SD1":3545,
@@ -37,7 +37,7 @@ app.controller('myCtrl', function($scope, $http) {
                 "Average2":1
             },
             {  
-                "Name":"store2",
+                "Name":"Store2",
                 "Product id":24341,
                 "Mean1":442,
                 "SD1":543,
@@ -51,7 +51,7 @@ app.controller('myCtrl', function($scope, $http) {
                 "Average2":1.5
             },
             {  
-                "Name":"hello",
+                "Name":"Hello",
                 "Product id":84272,
                 "Mean1":234,
                 "SD1":455,
@@ -65,7 +65,7 @@ app.controller('myCtrl', function($scope, $http) {
                 "Average2":4.5,
                 "children":[  
                     {  
-                    "Name":"eclipse",
+                    "Name":"Eclipse",
                     "Product id":89241,
                     "Mean1":124,
                     "SD1":24553,
@@ -79,7 +79,7 @@ app.controller('myCtrl', function($scope, $http) {
                     "Average2":0.5
                     },
                     {  
-                    "Name":"circle",
+                    "Name":"Circle",
                     "Product id":122321,
                     "Mean1":1256,
                     "SD1":643,
@@ -93,7 +93,7 @@ app.controller('myCtrl', function($scope, $http) {
                     "Average2":1
                     },
                     {  
-                    "Name":"square",
+                    "Name":"Square",
                     "Product id":8653,
                     "Mean1":65,
                     "SD1":86,
@@ -107,7 +107,7 @@ app.controller('myCtrl', function($scope, $http) {
                     "Average2":1
                     },
                     {  
-                    "Name":"rhombus",
+                    "Name":"Rhombus",
                     "Product id":75368,
                     "Mean1":456,
                     "SD1":46,
@@ -121,7 +121,7 @@ app.controller('myCtrl', function($scope, $http) {
                     "Average2":1
                     },
                     {  
-                    "Name":"parallel",
+                    "Name":"Parallel",
                     "Product id":094217,
                     "Mean1":7644,
                     "SD1":62,
@@ -139,7 +139,7 @@ app.controller('myCtrl', function($scope, $http) {
         ]
         },
         {  
-        "Name":"parallello",
+        "Name":"Parallello",
         "Product id":0942121,
         "Mean1":721,
         "SD1":62,
